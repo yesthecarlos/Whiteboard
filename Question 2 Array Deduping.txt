@@ -1,0 +1,29 @@
+Question #2: Array Deduping
+Write an algorithm that removes duplicates from an array. Do not use a function like filter() to solve this. Once you have solved the problem, demonstrate how it can be solved with filter(). Solve the problem with and without recursion.
+
+Set objects are collections of unique values. (It can also store NaN and undefined.)
+
+Example
+
+Input: [7, 9, "hi", 12, "hi", 7, 53] (Fixed typo by adding comma after second "hi")
+
+Output: [7, 9, "hi", 12, 53]
+
+The most fun way to approach this is to extend the Array class (global object prototype) to include a "unique" method that creates a new Set from the array.
+
+Array.prototype.unique = function(){
+  return Array.from(new Set(this));
+};
+
+rawArray = [7, 9, "hi", 12, "hi", 7, 53];
+
+console.log(rawArray.unique());
+
+You can also use the filter method to solve this:
+
+function removeDuplicates(rawArray) {
+  return rawArray.filter((value, index)=> rawArray.indexOf(value) === index);
+}
+
+
+
